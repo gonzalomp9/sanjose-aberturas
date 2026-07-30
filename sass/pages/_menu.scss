@@ -1,0 +1,117 @@
+@use "../utilities/variables" as v;
+@use "../utilities/mixins" as m;
+
+// catalogo
+.catalogo {
+  .lista-lineas {
+    @include m.flex(column, nowrap, flex-start, stretch, v.$esp-md);
+  }
+
+  .linea {
+    @extend %tarjeta;
+    display: grid;
+    grid-template-columns: 200px 1fr auto;
+    align-items: center;
+    gap: v.$esp-md;
+    padding: v.$esp-md;
+    border-left: 4px solid v.$aluminio;
+
+    .linea-marca {
+      @include m.flex(column, nowrap, center, flex-start, 0.2rem);
+
+      .eyebrow {
+        @include m.eyebrow(v.$texto-suave);
+        font-size: 0.68rem;
+      }
+
+      h3 {
+        color: v.$azul;
+      }
+    }
+
+    .linea-detalle {
+      p {
+        color: v.$texto-suave;
+        font-size: 0.95rem;
+      }
+
+      ul {
+        @include m.flex(row, wrap, flex-start, center, 0.5rem);
+        margin-top: v.$esp-xs;
+
+        li {
+          font-size: 0.75rem;
+          font-weight: 600;
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          color: v.$azul;
+          background-color: rgba(v.$azul, 0.07);
+          border-radius: 999px;
+          padding: 0.25rem 0.7rem;
+        }
+      }
+    }
+
+    .linea-precio {
+      text-align: right;
+
+      strong {
+        display: block;
+        font-family: v.$fuente-titulos;
+        font-size: 1.35rem;
+        color: v.$tinta;
+      }
+
+      span {
+        font-size: 0.78rem;
+        color: v.$texto-suave;
+      }
+    }
+
+    &:hover {
+      border-left-color: v.$acento;
+      transform: translateX(6px);
+      box-shadow: v.$sombra-media;
+    }
+
+    &--destacada {
+      border-left-color: v.$acento;
+      position: relative;
+
+      &::after {
+        content: "Más elegida";
+        position: absolute;
+        top: -12px;
+        left: v.$esp-md;
+        background-color: v.$acento-oscuro;
+        color: v.$blanco;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 0.2rem 0.7rem;
+        border-radius: 999px;
+      }
+    }
+
+    @include m.hasta-tablet {
+      grid-template-columns: 1fr;
+      gap: v.$esp-sm;
+
+      .linea-precio {
+        text-align: left;
+      }
+    }
+  }
+
+  // el recuadro que explica lo de los precios
+  .aviso {
+    margin-top: v.$esp-md;
+    padding: v.$esp-sm v.$esp-md;
+    background-color: rgba(v.$acento, 0.08);
+    border-left: 3px solid v.$acento;
+    border-radius: v.$radio-chico;
+    font-size: 0.9rem;
+    color: v.$texto-suave;
+  }
+}

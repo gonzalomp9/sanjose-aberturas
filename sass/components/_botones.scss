@@ -1,0 +1,138 @@
+@use "../utilities/variables" as v;
+@use "../utilities/mixins" as m;
+
+// botones (uso los mios, no los de bootstrap)
+%boton-base {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.6rem;
+  border: 1px solid transparent;
+  border-radius: v.$radio-chico;
+  font-family: v.$fuente-texto;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color v.$transicion, color v.$transicion,
+    transform v.$transicion, box-shadow v.$transicion;
+
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.boton {
+  @extend %boton-base;
+  background-color: v.$acento;
+  color: v.$tinta;
+
+  &:hover,
+  &:focus-visible {
+    background-color: v.$acento-oscuro;
+    color: v.$blanco;
+    box-shadow: 0 8px 18px rgba(v.$acento, 0.35);
+  }
+}
+
+.boton--linea {
+  @extend %boton-base;
+  background-color: transparent;
+  color: v.$azul;
+  border-color: v.$azul;
+
+  &:hover,
+  &:focus-visible {
+    background-color: v.$azul;
+    color: v.$blanco;
+  }
+}
+
+.boton--claro {
+  @extend %boton-base;
+  background-color: transparent;
+  color: v.$blanco;
+  border-color: rgba(v.$blanco, 0.55);
+
+  &:hover,
+  &:focus-visible {
+    background-color: v.$blanco;
+    color: v.$tinta;
+  }
+}
+
+// la flechita se mueve al pasar el mouse
+.boton,
+.boton--linea,
+.boton--claro {
+  .flecha {
+    transition: transform v.$transicion;
+  }
+
+  &:hover .flecha,
+  &:focus-visible .flecha {
+    transform: translateX(5px);
+  }
+}
+
+// titulos de cada seccion
+.titulo-seccion {
+  margin-bottom: v.$esp-lg;
+  max-width: 60ch;
+
+  .eyebrow {
+    @include m.eyebrow;
+    margin-bottom: 0.6rem;
+  }
+
+  h2 {
+    margin-bottom: v.$esp-xs;
+  }
+
+  p {
+    color: v.$texto-suave;
+  }
+
+  &--centrado {
+    margin-inline: auto;
+    text-align: center;
+
+    p {
+      margin-inline: auto;
+    }
+  }
+}
+
+// contenedores
+.contenedor {
+  @extend %contenedor;
+}
+
+.seccion {
+  padding-block: v.$esp-xl;
+
+  @include m.hasta-tablet {
+    padding-block: v.$esp-lg;
+  }
+}
+
+// grupo de botones al final de una seccion
+.acciones-cta {
+  @include m.flex(row, wrap, flex-start, center, v.$esp-sm);
+  margin-top: v.$esp-lg;
+}
+
+// separa bloques dentro de la misma pagina
+.bloque {
+  margin-top: v.$esp-xl;
+
+  @include m.hasta-tablet {
+    margin-top: v.$esp-lg;
+  }
+}

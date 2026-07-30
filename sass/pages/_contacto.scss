@@ -1,0 +1,163 @@
+@use "../utilities/variables" as v;
+@use "../utilities/mixins" as m;
+
+// contacto
+.contacto {
+  .grilla-contacto {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    align-items: start;
+    gap: v.$esp-md;
+
+    @include m.hasta-tablet {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  // formulario
+  .formulario {
+    @extend %tarjeta;
+    padding: v.$esp-md;
+
+    h2 {
+      font-size: 1.4rem;
+      margin-bottom: v.$esp-sm;
+    }
+
+    .campos {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: v.$esp-sm;
+
+      @include m.mobile {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .campo {
+      @include m.flex(column, nowrap, flex-start, stretch, 0.35rem);
+
+      &--ancho {
+        grid-column: 1 / -1;
+      }
+
+      label {
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        color: v.$azul;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 0.75rem 0.9rem;
+        font-family: v.$fuente-texto;
+        font-size: 0.95rem;
+        color: v.$texto;
+        background-color: v.$humo;
+        border: 1px solid v.$borde;
+        border-radius: v.$radio-chico;
+        transition: border-color v.$transicion, box-shadow v.$transicion,
+          background-color v.$transicion;
+
+        &::placeholder {
+          color: rgba(v.$texto-suave, 0.7);
+        }
+
+        &:focus {
+          outline: none;
+          background-color: v.$blanco;
+          border-color: v.$acento;
+          box-shadow: 0 0 0 3px rgba(v.$acento, 0.18);
+        }
+
+        // marca en rojo si el campo esta mal
+        &:not(:placeholder-shown):invalid {
+          border-color: #c0392b;
+        }
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 130px;
+      }
+    }
+
+    .acciones {
+      @include m.flex(row, wrap, flex-start, center, v.$esp-sm);
+      margin-top: v.$esp-md;
+    }
+
+    .legal {
+      margin-top: v.$esp-sm;
+      font-size: 0.8rem;
+      color: v.$texto-suave;
+    }
+  }
+
+  // datos y mapa
+  .datos-directos {
+    @include m.flex(column, nowrap, flex-start, stretch, v.$esp-md);
+
+    .ficha {
+      @extend %tarjeta;
+      padding: v.$esp-md;
+
+      h2,
+      h3 {
+        font-size: 1.15rem;
+        color: v.$azul;
+        margin-bottom: v.$esp-sm;
+      }
+
+      dl {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 0.45rem v.$esp-sm;
+        font-size: 0.93rem;
+
+        dt {
+          font-weight: 600;
+          color: v.$tinta;
+        }
+
+        dd {
+          color: v.$texto-suave;
+
+          a {
+            @extend %enlace-limpio;
+            color: v.$azul;
+            border-bottom: 1px solid rgba(v.$azul, 0.25);
+
+            &:hover,
+            &:focus-visible {
+              color: v.$acento-texto;
+              border-bottom-color: v.$acento-texto;
+            }
+          }
+        }
+      }
+    }
+
+    .mapa {
+      @extend %tarjeta;
+      overflow: hidden;
+      padding: 0;
+
+      iframe {
+        display: block;
+        width: 100%;
+        height: 300px;
+        border: 0;
+        filter: grayscale(0.4) contrast(1.05);
+        transition: filter v.$transicion;
+
+        &:hover {
+          filter: none;
+        }
+      }
+    }
+  }
+}

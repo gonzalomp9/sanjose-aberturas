@@ -1,0 +1,121 @@
+@use "../utilities/variables" as v;
+@use "../utilities/mixins" as m;
+
+// footer
+.pie {
+  background-color: v.$tinta;
+  color: v.$aluminio;
+  margin-top: v.$esp-xl;
+  padding-block: v.$esp-lg v.$esp-md;
+
+  .pie-contenido {
+    @extend %contenedor;
+    @include m.grid-auto(240px, v.$esp-lg);
+    padding-bottom: v.$esp-md;
+    border-bottom: 1px solid rgba(v.$aluminio, 0.18);
+  }
+
+  h2,
+  h3 {
+    color: v.$blanco;
+    font-size: 1.05rem;
+    letter-spacing: 0.04em;
+    margin-bottom: v.$esp-sm;
+  }
+
+  p {
+    font-size: 0.9rem;
+    color: rgba(v.$aluminio, 0.85);
+  }
+
+  address {
+    font-style: normal;
+    font-size: 0.9rem;
+
+    a {
+      @extend %enlace-limpio;
+      color: rgba(v.$aluminio, 0.9);
+      display: block;
+      padding-block: 0.15rem;
+
+      &:hover,
+      &:focus-visible {
+        color: v.$acento-claro;
+      }
+    }
+  }
+
+  // redes
+  .redes ul {
+    @include m.flex(row, wrap, flex-start, center, 0.9rem);
+
+    li a {
+      @extend %flex-centro;
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(v.$aluminio, 0.35);
+      border-radius: 50%;
+      transition: background-color v.$transicion, transform v.$transicion,
+        border-color v.$transicion;
+
+      img {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+      }
+
+      &:hover,
+      &:focus-visible {
+        background-color: v.$acento;
+        border-color: v.$acento;
+        transform: translateY(-4px) rotate(-6deg);
+      }
+    }
+  }
+
+  // el whatsapp que queda fijo abajo a la derecha
+  .wa-flotante {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 1030;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background-color: #25d366;
+    box-shadow: v.$sombra-media;
+    animation: latido 2.6s ease-in-out infinite;
+    @extend %flex-centro;
+
+    img {
+      width: 32px;
+      height: 32px;
+    }
+
+    &:hover,
+    &:focus-visible {
+      animation-play-state: paused;
+      background-color: #1ebe5a;
+    }
+
+    @include m.mobile {
+      width: 50px;
+      height: 50px;
+      right: 14px;
+      bottom: 14px;
+
+      img {
+        width: 27px;
+        height: 27px;
+      }
+    }
+  }
+
+  .copy {
+    @extend %contenedor;
+    padding-top: v.$esp-md;
+    text-align: center;
+    font-size: 0.82rem;
+    color: rgba(v.$aluminio, 0.7);
+  }
+}

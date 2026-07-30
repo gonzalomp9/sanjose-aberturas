@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sanjose-aberturas.vercel.app/sitemap.xml

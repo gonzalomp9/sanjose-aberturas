@@ -1,0 +1,20 @@
+// archivo principal, junta todo lo demas
+// para compilar: sass --watch sass/main.scss styles/style.css
+
+// utilidades
+@use "utilities/variables";
+@use "utilities/mixins";
+@use "utilities/reset";
+
+// componentes
+@use "components/header";
+@use "components/footer";
+@use "components/botones";
+@use "components/tarjetas";
+
+// paginas
+@use "pages/home";
+@use "pages/menu";
+@use "pages/galeria";
+@use "pages/nosotros";
+@use "pages/contacto";

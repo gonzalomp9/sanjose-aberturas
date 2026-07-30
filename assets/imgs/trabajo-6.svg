@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" width="1000" height="700" role="img" aria-labelledby="t d">
+<title id="t">Sistema oscilobatiente en PVC</title><desc id="d">Ventana de PVC con apertura oscilobatiente.</desc>
+<defs>
+  <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#F4F8FB"/><stop offset="0.55" stop-color="#DCE6EE"/><stop offset="1" stop-color="#BFD0DE"/>
+  </linearGradient>
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M40 0H0V40" fill="none" stroke="#C7CDD4" stroke-width="1" opacity=".45"/>
+  </pattern>
+</defs>
+<rect width="1000" height="700" fill="#EEF1F4"/>
+<rect width="1000" height="700" fill="url(#grid)"/><rect x="45" y="45" width="910" height="610" fill="none" stroke="#C7CDD4" stroke-width="2"/><rect x="300" y="170" width="400" height="400" fill="url(#glass)" stroke="#0B1A2E" stroke-width="14"/><rect x="314" y="184" width="372" height="372" fill="none" stroke="#1A365D" stroke-width="2" opacity=".55"/><path d="M314 184 L500 370 L314 556" fill="none" stroke="#0E7C9B" stroke-width="4" stroke-dasharray="12 10"/><circle cx="676" cy="370" r="10" fill="#0E7C9B"/><g stroke="#0E7C9B" stroke-width="2" fill="none"><path d="M300 602V618M700 602V618M300 610H700"/></g><text x="500.0" y="594" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="600" fill="#0E7C9B">1,20 m</text><text x="70" y="110" font-family="Inter,Arial,sans-serif" font-size="24" font-weight="700" letter-spacing="3" fill="#1A365D" opacity=".8">OBRA 06</text></svg>

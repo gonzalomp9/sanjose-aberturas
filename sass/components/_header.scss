@@ -1,0 +1,127 @@
+@use "../utilities/variables" as v;
+@use "../utilities/mixins" as m;
+
+// header y menu de arriba
+.cabecera {
+  background-color: v.$tinta;
+  border-bottom: 3px solid v.$acento;
+
+  .navbar {
+    @extend %contenedor;
+    padding-block: 0.75rem;
+
+    // piso los colores que trae bootstrap por defecto
+    --bs-navbar-padding-x: 0;
+    --bs-navbar-color: #{v.$blanco};
+    --bs-navbar-hover-color: #{v.$acento-claro};
+    --bs-navbar-active-color: #{v.$acento-claro};
+  }
+
+  .navbar-brand {
+    @include m.flex(row, nowrap, flex-start, center, 0.85rem);
+    padding: 0;
+
+    .logo {
+      height: 52px;
+      width: auto;
+      transition: transform v.$transicion;
+    }
+
+    .marca {
+      @include m.flex(column, nowrap, center, flex-start, 0);
+      line-height: 1.1;
+
+      strong {
+        font-family: v.$fuente-titulos;
+        font-size: 1.05rem;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        color: v.$blanco;
+      }
+
+      span {
+        @include m.eyebrow;
+        font-size: 0.62rem;
+        color: v.$aluminio;
+      }
+    }
+
+    &:hover .logo {
+      transform: scale(1.05) rotate(-1deg);
+    }
+
+    @include m.mobile {
+      .logo {
+        height: 40px;
+      }
+      .marca strong {
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  // boton del menu en celu
+  .navbar-toggler {
+    border: 1px solid rgba(v.$aluminio, 0.5);
+    border-radius: v.$radio-chico;
+    padding: 0.35rem 0.6rem;
+
+    &:focus {
+      box-shadow: 0 0 0 3px rgba(v.$acento, 0.45);
+    }
+  }
+
+  .navbar-nav {
+    @include m.flex(row, nowrap, flex-end, center, 1.8rem);
+
+    .nav-link {
+      position: relative;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: v.$blanco;
+      padding: 0.35rem 0;
+      transition: color v.$transicion;
+
+      // subrayado que crece al pasar el mouse
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2px;
+        background-color: v.$acento;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform v.$transicion;
+      }
+
+      &:hover,
+      &:focus-visible {
+        color: v.$acento;
+      }
+
+      &:hover::after,
+      &:focus-visible::after,
+      &[aria-current="page"]::after {
+        transform: scaleX(1);
+      }
+
+      &[aria-current="page"] {
+        color: v.$acento;
+      }
+    }
+
+    @include m.hasta-tablet {
+      @include m.flex(column, nowrap, flex-start, flex-start, 0);
+      padding-block: v.$esp-sm;
+
+      .nav-link {
+        width: 100%;
+        padding: 0.6rem 0;
+        border-bottom: 1px solid rgba(v.$aluminio, 0.15);
+      }
+    }
+  }
+}

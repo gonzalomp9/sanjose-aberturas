@@ -1,0 +1,131 @@
+@use "variables" as v;
+
+// para no repetir display flex en todos lados
+@mixin flex($fd: row, $fw: nowrap, $jc: flex-start, $ai: stretch, $g: 0) {
+  display: flex;
+  flex-direction: $fd;
+  flex-wrap: $fw;
+  justify-content: $jc;
+  align-items: $ai;
+  gap: $g;
+}
+
+// grilla que se acomoda sola
+@mixin grid-auto($min: 280px, $g: v.$esp-md) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($min, 1fr));
+  gap: $g;
+}
+
+// media queries
+// notebook
+@mixin note {
+  @media (min-width: 968px) and (max-width: 1400px) {
+    @content;
+  }
+}
+// tablet
+@mixin tablet {
+  @media (min-width: 568px) and (max-width: 967px) {
+    @content;
+  }
+}
+// celu
+@mixin mobile {
+  @media (max-width: 567px) {
+    @content;
+  }
+}
+// tablet y celu juntos
+@mixin hasta-tablet {
+  @media (max-width: 967px) {
+    @content;
+  }
+}
+
+// el marquito de aluminio adentro de las imagenes
+@mixin perfil($color: v.$aluminio, $offset: 10px) {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: $offset;
+    border: 1px solid $color;
+    pointer-events: none;
+    transition: inset v.$transicion, border-color v.$transicion;
+  }
+}
+
+// el textito chico en mayusculas arriba de los titulos
+@mixin eyebrow($color: v.$acento-texto) {
+  display: inline-block;
+  font-family: v.$fuente-texto;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $color;
+}
+
+// placeholders para el @extend
+%flex-centro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+%tarjeta {
+  background-color: v.$blanco;
+  border: 1px solid v.$borde;
+  border-radius: v.$radio;
+  box-shadow: v.$sombra-suave;
+  transition: transform v.$transicion, box-shadow v.$transicion,
+    border-color v.$transicion;
+}
+
+%contenedor {
+  width: 100%;
+  max-width: v.$ancho-maximo;
+  margin-inline: auto;
+  padding-inline: v.$esp-md;
+
+  @include mobile {
+    padding-inline: v.$esp-sm;
+  }
+}
+
+%enlace-limpio {
+  text-decoration: none;
+  color: inherit;
+}
+
+// animaciones
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes abrir-marco {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes latido {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}

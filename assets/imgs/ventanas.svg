@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 640" width="900" height="640" role="img" aria-labelledby="t d">
+<title id="t">Ventana corrediza con doble vidrio hermetico</title><desc id="d">Plano de una ventana corrediza de dos hojas con vidrio DVH.</desc>
+<defs>
+  <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#F4F8FB"/><stop offset="0.55" stop-color="#DCE6EE"/><stop offset="1" stop-color="#BFD0DE"/>
+  </linearGradient>
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M40 0H0V40" fill="none" stroke="#C7CDD4" stroke-width="1" opacity=".45"/>
+  </pattern>
+</defs>
+<rect width="900" height="640" fill="#EEF1F4"/>
+<rect width="900" height="640" fill="url(#grid)"/><rect x="40" y="40" width="820" height="560" fill="none" stroke="#C7CDD4" stroke-width="2"/><rect x="200" y="190" width="500" height="340" fill="url(#glass)" stroke="#0B1A2E" stroke-width="12"/><rect x="212" y="202" width="476" height="316" fill="none" stroke="#1A365D" stroke-width="2" opacity=".55"/><rect x="450" y="202" width="10" height="316" fill="#0B1A2E"/><path d="M260 260 H400 M260 310 H400" stroke="#FFFFFF" stroke-width="7" opacity=".7"/><path d="M470 500 L560 430" stroke="#0E7C9B" stroke-width="4" marker-end="none"/><circle cx="560" cy="430" r="8" fill="#0E7C9B"/><g stroke="#0E7C9B" stroke-width="2" fill="none"><path d="M200 562V578M700 562V578M200 570H700"/></g><text x="450.0" y="554" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="600" fill="#0E7C9B">1,50 m</text><text x="70" y="105" font-family="Inter,Arial,sans-serif" font-size="24" font-weight="700" letter-spacing="3" fill="#1A365D" opacity=".8">Ventanas</text></svg>

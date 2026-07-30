@@ -1,0 +1,36 @@
+// fuentes
+$fuente-titulos: "Sora", "Segoe UI", sans-serif;
+$fuente-texto: "Inter", "Segoe UI", sans-serif;
+
+// colores
+$tinta: #0b1a2e; // el azul del logo
+$azul: #1a365d;
+$azul-claro: #2e568f;
+// celeste (el vidrio). uso 3 tonos segun el fondo asi se lee bien
+$acento: #1b9bd1;
+$acento-texto: #0b6e8f; // para texto sobre fondo claro
+$acento-claro: #5ecdf0; // para texto sobre fondo oscuro
+$acento-oscuro: #0a5b77; // hover
+$aluminio: #c7cdd4;
+$humo: #f2f4f6; // fondo
+$blanco: #ffffff;
+$texto: #26303c;
+$texto-suave: #5b6875;
+$borde: #dfe4e9;
+
+// medidas
+$ancho-maximo: 1180px;
+$radio: 6px;
+$radio-chico: 4px;
+
+// espaciados
+$esp-xs: 0.5rem;
+$esp-sm: 1rem;
+$esp-md: 2rem;
+$esp-lg: 4rem;
+$esp-xl: 6rem;
+
+// sombras y transiciones
+$sombra-suave: 0 2px 6px rgba($tinta, 0.06);
+$sombra-media: 0 12px 28px rgba($tinta, 0.14);
+$transicion: 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);

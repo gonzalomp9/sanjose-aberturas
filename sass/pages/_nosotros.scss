@@ -1,0 +1,117 @@
+@use "../utilities/variables" as v;
+@use "../utilities/mixins" as m;
+
+// pagina nosotros
+.nosotros {
+  .historia {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    align-items: center;
+    gap: v.$esp-lg;
+
+    .historia-texto {
+      h2 {
+        margin-bottom: v.$esp-sm;
+      }
+
+      p + p {
+        margin-top: v.$esp-sm;
+      }
+
+      p {
+        color: v.$texto-suave;
+      }
+
+      strong {
+        color: v.$tinta;
+      }
+    }
+
+    .historia-figura {
+      @include m.perfil(v.$aluminio, 12px);
+
+      img {
+        width: 100%;
+        border-radius: v.$radio;
+        box-shadow: v.$sombra-suave;
+      }
+    }
+
+    @include m.hasta-tablet {
+      grid-template-columns: 1fr;
+      gap: v.$esp-md;
+    }
+  }
+
+  // linea de tiempo
+  .linea-tiempo {
+    position: relative;
+    padding-left: v.$esp-md;
+    border-left: 2px solid v.$borde;
+
+    li {
+      position: relative;
+      padding-left: v.$esp-md;
+      padding-bottom: v.$esp-md;
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: calc(-1 * v.$esp-md - 7px);
+        top: 8px;
+        width: 12px;
+        height: 12px;
+        background-color: v.$blanco;
+        border: 2px solid v.$acento;
+        border-radius: 50%;
+        transition: transform v.$transicion, background-color v.$transicion;
+      }
+
+      time {
+        @include m.eyebrow(v.$acento-texto);
+        display: block;
+        margin-bottom: 0.2rem;
+      }
+
+      p {
+        color: v.$texto-suave;
+        font-size: 0.95rem;
+      }
+
+      &:hover::before {
+        transform: scale(1.4);
+        background-color: v.$acento;
+      }
+    }
+  }
+
+  // valores
+  .valores {
+    @include m.grid-auto(250px, v.$esp-md);
+
+    article {
+      @extend %tarjeta;
+      @include m.perfil(v.$humo, 8px);
+      padding: v.$esp-md;
+
+      h3 {
+        color: v.$azul;
+        margin-bottom: 0.4rem;
+      }
+
+      p {
+        color: v.$texto-suave;
+        font-size: 0.95rem;
+      }
+
+      &:hover {
+        transform: translateY(-6px);
+        box-shadow: v.$sombra-media;
+
+        &::before {
+          border-color: v.$acento;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,102 @@
+@use "variables" as v;
+@use "mixins" as m;
+
+// reset y estilos base
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: v.$fuente-texto;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: v.$texto;
+  background-color: v.$humo;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: v.$fuente-titulos;
+  color: v.$tinta;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(2.1rem, 4.5vw, 3.4rem);
+  font-weight: 800;
+}
+h2 {
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  font-weight: 700;
+}
+h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+p {
+  max-width: 68ch;
+}
+
+a {
+  color: v.$azul;
+  transition: color v.$transicion;
+
+  &:hover,
+  &:focus-visible {
+    color: v.$acento-texto;
+  }
+}
+
+img,
+picture,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+ul {
+  list-style: none;
+}
+
+// que se vea el foco al navegar con teclado
+:focus-visible {
+  outline: 3px solid v.$acento;
+  outline-offset: 3px;
+}
+
+// texto que solo leen los lectores de pantalla
+.solo-lectores {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+// si el usuario pidio menos animaciones, las apago
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

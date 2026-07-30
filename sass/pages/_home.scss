@@ -1,0 +1,202 @@
+@use "../utilities/variables" as v;
+@use "../utilities/mixins" as m;
+
+// home
+.hero {
+  background-color: v.$tinta;
+  color: v.$blanco;
+  overflow: hidden;
+  padding-block: v.$esp-xl;
+
+  .hero-grid {
+    @extend %contenedor;
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    align-items: center;
+    gap: v.$esp-lg;
+  }
+
+  .hero-texto {
+    animation: aparecer 0.8s both;
+
+    .eyebrow {
+      @include m.eyebrow(v.$acento-claro);
+      margin-bottom: v.$esp-sm;
+    }
+
+    h1 {
+      color: v.$blanco;
+      margin-bottom: v.$esp-sm;
+
+      em {
+        font-style: normal;
+        color: v.$acento-claro;
+      }
+    }
+
+    p {
+      color: rgba(v.$aluminio, 0.92);
+      font-size: 1.05rem;
+      margin-bottom: v.$esp-md;
+    }
+
+    .hero-acciones {
+      @include m.flex(row, wrap, flex-start, center, v.$esp-sm);
+    }
+  }
+
+  .hero-figura {
+    @include m.perfil(rgba(v.$aluminio, 0.45), 14px);
+    animation: abrir-marco 1s 0.2s both;
+
+    img {
+      width: 100%;
+      border-radius: v.$radio;
+    }
+  }
+
+  @include m.hasta-tablet {
+    padding-block: v.$esp-lg;
+
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: v.$esp-md;
+    }
+
+    .hero-figura {
+      order: -1;
+    }
+  }
+}
+
+// franja con los numeros
+.datos {
+  background-color: v.$azul;
+  color: v.$blanco;
+
+  ul {
+    @extend %contenedor;
+    @include m.grid-auto(180px, 0);
+    padding-block: v.$esp-md;
+    text-align: center;
+
+    li {
+      padding: v.$esp-sm;
+      border-right: 1px solid rgba(v.$blanco, 0.18);
+
+      &:last-child {
+        border-right: none;
+      }
+
+      strong {
+        display: block;
+        font-family: v.$fuente-titulos;
+        font-size: 2.1rem;
+        font-weight: 800;
+        color: v.$acento-claro;
+        line-height: 1.1;
+      }
+
+      span {
+        font-size: 0.85rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: rgba(v.$blanco, 0.85);
+      }
+    }
+
+    @include m.mobile {
+      li {
+        border-right: none;
+        border-bottom: 1px solid rgba(v.$blanco, 0.18);
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+}
+
+// categorias
+.categorias {
+  .grilla-categorias {
+    @include m.grid-auto(290px, v.$esp-md);
+  }
+}
+
+// como trabajamos
+.proceso {
+  background-color: v.$blanco;
+  border-block: 1px solid v.$borde;
+
+  .pasos {
+    @include m.grid-auto(240px, v.$esp-md);
+    counter-reset: paso;
+
+    li {
+      counter-increment: paso;
+      padding-top: v.$esp-md;
+      border-top: 3px solid v.$borde;
+      transition: border-color v.$transicion;
+
+      &::before {
+        content: counter(paso, decimal-leading-zero);
+        display: block;
+        font-family: v.$fuente-titulos;
+        font-size: 2rem;
+        font-weight: 800;
+        color: v.$aluminio;
+        line-height: 1;
+        margin-bottom: v.$esp-xs;
+        transition: color v.$transicion;
+      }
+
+      h3 {
+        margin-bottom: 0.4rem;
+      }
+
+      p {
+        color: v.$texto-suave;
+        font-size: 0.95rem;
+      }
+
+      &:hover {
+        border-top-color: v.$acento;
+
+        &::before {
+          color: v.$acento-texto;
+        }
+      }
+    }
+  }
+}
+
+// llamado final
+.cta {
+  .cta-caja {
+    @extend %contenedor;
+    @include m.flex(row, wrap, space-between, center, v.$esp-md);
+    background-color: v.$azul;
+    color: v.$blanco;
+    border-radius: v.$radio;
+    padding: v.$esp-lg;
+    max-width: v.$ancho-maximo;
+
+    h2 {
+      color: v.$blanco;
+      max-width: 20ch;
+    }
+
+    p {
+      color: rgba(v.$aluminio, 0.9);
+      max-width: 46ch;
+    }
+
+    @include m.mobile {
+      padding: v.$esp-md;
+      text-align: center;
+      justify-content: center;
+    }
+  }
+}

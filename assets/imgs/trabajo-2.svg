@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" width="1000" height="700" role="img" aria-labelledby="t d">
+<title id="t">Puerta inyectada de seguridad</title><desc id="d">Puerta de entrada con cerradura multipunto.</desc>
+<defs>
+  <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#F4F8FB"/><stop offset="0.55" stop-color="#DCE6EE"/><stop offset="1" stop-color="#BFD0DE"/>
+  </linearGradient>
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M40 0H0V40" fill="none" stroke="#C7CDD4" stroke-width="1" opacity=".45"/>
+  </pattern>
+</defs>
+<rect width="1000" height="700" fill="#EEF1F4"/>
+<rect width="1000" height="700" fill="url(#grid)"/><rect x="45" y="45" width="910" height="610" fill="none" stroke="#C7CDD4" stroke-width="2"/><rect x="360" y="130" width="280" height="430" fill="url(#glass)" stroke="#0B1A2E" stroke-width="12"/><rect x="372" y="142" width="256" height="406" fill="none" stroke="#1A365D" stroke-width="2" opacity=".55"/><rect x="400" y="175" width="200" height="140" fill="none" stroke="#1A365D" stroke-width="4" opacity=".5"/><rect x="605" y="325" width="14" height="50" rx="7" fill="#0E7C9B"/><g stroke="#0E7C9B" stroke-width="2" fill="none"><path d="M360 592V608M640 592V608M360 600H640"/></g><text x="500.0" y="584" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="600" fill="#0E7C9B">0,90 m</text><text x="70" y="110" font-family="Inter,Arial,sans-serif" font-size="24" font-weight="700" letter-spacing="3" fill="#1A365D" opacity=".8">OBRA 02</text></svg>

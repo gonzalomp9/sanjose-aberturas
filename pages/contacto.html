@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0B1A2E">
+
+    <title>Contacto y cotizaciones | San José Aberturas</title>
+    <meta name="description" content="Pedí tu cotización de aberturas sin cargo. Teléfono, WhatsApp, email y local en Av. Juan B. Alberdi 3101, CABA. Respondemos en 48 horas.">
+    <meta name="keywords" content="cotización aberturas, contacto san josé aberturas, teléfono, whatsapp, aberturas CABA">
+    <meta name="author" content="TU-NOMBRE">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://sanjose-aberturas.vercel.app/pages/contacto.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_AR">
+    <meta property="og:site_name" content="San José Aberturas">
+    <meta property="og:title" content="Contacto y cotizaciones | San José Aberturas">
+    <meta property="og:description" content="Pedí tu cotización de aberturas sin cargo. Teléfono, WhatsApp, email y local en Av. Juan B. Alberdi 3101, CABA. Respondemos en 48 horas.">
+    <meta property="og:url" content="https://sanjose-aberturas.vercel.app/pages/contacto.html">
+    <meta property="og:image" content="https://sanjose-aberturas.vercel.app/assets/imgs/logo.png">
+
+    <link rel="icon" href="../assets/imgs/favicon.png" type="image/png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Sora:wght@600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+
+<body>
+    <header class="cabecera sticky-top">
+        <nav class="navbar navbar-expand-lg" aria-label="Navegación principal">
+            <a class="navbar-brand" href="../index.html">
+                <img src="../assets/imgs/logo.png" alt="Logo de San José Aberturas" class="logo" width="120"
+                    height="52">
+                <span class="marca">
+                    <strong>SAN JOSÉ</strong>
+                    <span>Aberturas</span>
+                </span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal"
+                aria-controls="menuPrincipal" aria-expanded="false" aria-label="Abrir el menú de navegación">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menuPrincipal">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./menu.html">Catálogo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./galeria.html">Galería</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./nosotros.html">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./contacto.html" aria-current="page">Contacto</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="seccion contacto">
+        <div class="contenedor">
+            <div class="titulo-seccion">
+                <p class="eyebrow">Contacto</p>
+                <h1>Contanos qué necesitás y te cotizamos</h1>
+                <p>Cuanto más detalle nos des (medidas del vano, tipo de vidrio, color), más precisa sale la
+                    cotización. Responder no tiene costo ni compromiso.</p>
+            </div>
+
+            <div class="grilla-contacto">
+                <!-- form -->
+                <section class="formulario" aria-labelledby="titulo-formulario">
+                    <h2 id="titulo-formulario">Pedí tu cotización</h2>
+
+                    <!-- si quiero cambiar de form aca -->
+                    <form action="https://formspree.io/f/xgogqrqy" method="post" novalidate>
+                        <input type="hidden" name="_subject" value="Nueva consulta desde la web">
+                        <div class="campos">
+                            <div class="campo">
+                                <label for="nombre">Nombre y apellido</label>
+                                <input type="text" id="nombre" name="nombre" placeholder="Juan Pérez"
+                                    autocomplete="name" required>
+                            </div>
+
+                            <div class="campo">
+                                <label for="telefono">Celular o WhatsApp</label>
+                                <input type="tel" id="telefono" name="telefono" placeholder="11 1234-5678"
+                                    autocomplete="tel" required>
+                            </div>
+
+                            <div class="campo">
+                                <label for="email">Correo electrónico</label>
+                                <input type="email" id="email" name="email" placeholder="juanperez@ejemplo.com"
+                                    autocomplete="email" required>
+                            </div>
+
+                            <div class="campo">
+                                <label for="producto">¿Qué necesitás?</label>
+                                <select id="producto" name="producto" required>
+                                    <option value="">Elegí una opción</option>
+                                    <option value="ventanas">Ventanas</option>
+                                    <option value="puertas">Puertas</option>
+                                    <option value="portones">Portones</option>
+                                    <option value="cerramiento">Cerramiento de balcón</option>
+                                    <option value="otro">Otro</option>
+                                </select>
+                            </div>
+
+                            <div class="campo campo--ancho">
+                                <label for="detalle">Detalle de la obra</label>
+                                <textarea id="detalle" name="detalle" rows="5"
+                                    placeholder="Necesito dos ventanas de 1,50 × 1,10 m para un dormitorio en planta alta. El vano ya está abierto."
+                                    required></textarea>
+                            </div>
+                        </div>
+
+                        <div class="acciones">
+                            <button type="submit" class="boton">Enviar consulta <span class="flecha"
+                                    aria-hidden="true">→</span></button>
+                            <button type="reset" class="boton--linea">Borrar datos</button>
+                        </div>
+
+                        <p class="legal">Al enviar, tu consulta llega a nuestro correo y te respondemos dentro de las
+                            48 horas hábiles. Usamos tus datos solo para eso: no los compartimos con terceros.</p>
+                    </form>
+                </section>
+
+                <!-- datos de contacto y mapa -->
+                <aside class="datos-directos">
+                    <article class="ficha">
+                        <h2>Datos del local</h2>
+                        <dl>
+                            <dt>Dirección</dt>
+                            <dd>Av. Juan B. Alberdi 3101, CABA</dd>
+
+                            <dt>Teléfono</dt>
+                            <dd><a href="tel:+541143218765">011 4321-8765</a></dd>
+
+                            <dt>WhatsApp</dt>
+                            <dd><a href="https://wa.me/5491122334455" target="_blank" rel="noopener">+54 9 11
+                                    2233-4455</a></dd>
+
+                            <dt>Email</dt>
+                            <dd><a
+                                    href="mailto:presupuestos@sanjoseaberturas.com">presupuestos@sanjoseaberturas.com</a>
+                            </dd>
+
+                            <dt>Horarios</dt>
+                            <dd>Lunes a viernes de 8:00 a 17:00 hs<br>Sábados de 9:00 a 13:00 hs</dd>
+                        </dl>
+                    </article>
+
+                    <article class="mapa">
+                        <h2 class="solo-lectores">Ubicación del local en el mapa</h2>
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3282.8207992920943!2d-58.4740271235022!3d-34.63396855909769!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcc98582804c07%3A0xc3f3b68cb142a7c5!2sAv.%20Juan%20Bautista%20Alberdi%203101%2C%20C1406GSH%20Cdad.%20Aut%C3%B3noma%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1779407908343!5m2!1ses!2sar"
+                            title="Mapa con la ubicación del local de San José Aberturas" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+                    </article>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer class="pie">
+        <div class="pie-contenido">
+            <div>
+                <h2>San José Aberturas</h2>
+                <p>Distribuidores de aberturas de aluminio y PVC. Te asesoramos, cotizamos sin cargo y
+                    gestionamos el pedido con la fábrica.</p>
+            </div>
+
+            <div>
+                <h3>Contacto</h3>
+                <address>
+                    <a href="https://www.google.com/maps/search/?api=1&amp;query=Av.+Juan+B.+Alberdi+3101%2C+CABA"
+                        target="_blank" rel="noopener">Av. Juan B. Alberdi 3101, CABA</a>
+                    <a href="tel:+541143218765">011 4321-8765</a>
+                    <a href="mailto:presupuestos@sanjoseaberturas.com">presupuestos@sanjoseaberturas.com</a>
+                </address>
+            </div>
+
+            <div>
+                <h3>Horarios</h3>
+                <p>Lunes a viernes de 8:00 a 17:00 hs<br>Sábados de 9:00 a 13:00 hs</p>
+            </div>
+
+            <div class="redes">
+                <h3>Seguinos</h3>
+                <ul>
+                    <li>
+                        <a href="https://www.instagram.com/casasanjoseaberturas/" target="_blank" rel="noopener"
+                            aria-label="Instagram de San José Aberturas">
+                            <img src="../assets/logos/instagram.png" alt="" width="20" height="20" loading="lazy">
+                        </a>
+                    </li>
+                    <!-- las otras redes las dejo para cuando las tenga -->
+                    <!--
+                    <li>
+                        <a href="https://www.facebook.com/TU-PAGINA" target="_blank" rel="noopener"
+                            aria-label="Facebook de San José Aberturas">
+                            <img src="../assets/logos/facebook.png" alt="" width="20" height="20" loading="lazy">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.x.com/TU-CUENTA" target="_blank" rel="noopener"
+                            aria-label="X de San José Aberturas">
+                            <img src="../assets/logos/x.png" alt="" width="20" height="20" loading="lazy">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/@TU-CANAL" target="_blank" rel="noopener"
+                            aria-label="YouTube de San José Aberturas">
+                            <img src="../assets/logos/yt.png" alt="" width="20" height="20" loading="lazy">
+                        </a>
+                    </li>
+                    -->
+                </ul>
+            </div>
+        </div>
+
+        <p class="copy">Creado por Gonza &copy; 2026 · San José Aberturas. Todos los derechos reservados.</p>
+
+        <a class="wa-flotante" href="https://wa.me/5491155554444" target="_blank" rel="noopener"
+            aria-label="Escribinos por WhatsApp">
+            <img src="../assets/logos/whatsapp.png" alt="" width="32" height="32" loading="lazy">
+        </a>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
