@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 640" width="900" height="640" role="img" aria-labelledby="t d">
+<title id="t">Otros productos: claraboyas, placares y revestimientos</title><desc id="d">Ilustracion de una claraboya, un frente de placard y ladrillos de vidrio.</desc>
+<defs>
+  <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#F4F8FB"/><stop offset="0.55" stop-color="#DCE6EE"/><stop offset="1" stop-color="#BFD0DE"/>
+  </linearGradient>
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M40 0H0V40" fill="none" stroke="#C7CDD4" stroke-width="1" opacity=".45"/>
+  </pattern>
+</defs>
+<rect width="900" height="640" fill="#EEF1F4"/>
+<rect width="900" height="640" fill="url(#grid)"/>
+<rect x="40" y="40" width="820" height="560" fill="none" stroke="#C7CDD4" stroke-width="2"/><path d="M170 200 L300 130 L430 200 L300 270 Z" fill="url(#glass)" stroke="#0B1A2E" stroke-width="8"/><path d="M300 130 V270 M170 200 H430" stroke="#0B1A2E" stroke-width="3" opacity=".5"/><rect x="500" y="150" width="260" height="360" fill="url(#glass)" stroke="#0B1A2E" stroke-width="8"/><rect x="630" y="162" width="8" height="336" fill="#0B1A2E"/><circle cx="618" cy="330" r="7" fill="#0E7C9B"/><circle cx="650" cy="330" r="7" fill="#0E7C9B"/><rect x="180" y="350" width="60" height="60" rx="6" fill="url(#glass)" stroke="#0B1A2E" stroke-width="4"/><rect x="250" y="350" width="60" height="60" rx="6" fill="url(#glass)" stroke="#0B1A2E" stroke-width="4"/><rect x="320" y="350" width="60" height="60" rx="6" fill="url(#glass)" stroke="#0B1A2E" stroke-width="4"/><rect x="180" y="420" width="60" height="60" rx="6" fill="url(#glass)" stroke="#0B1A2E" stroke-width="4"/><rect x="250" y="420" width="60" height="60" rx="6" fill="url(#glass)" stroke="#0B1A2E" stroke-width="4"/><rect x="320" y="420" width="60" height="60" rx="6" fill="url(#glass)" stroke="#0B1A2E" stroke-width="4"/><text x="70" y="105" font-family="Inter,Arial,sans-serif" font-size="24" font-weight="700" letter-spacing="3" fill="#1A365D" opacity=".8">VARIOS</text></svg>
