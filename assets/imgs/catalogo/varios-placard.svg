@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-labelledby="t d">
+<title id="t">Frente de placard integral</title><desc id="d">Ilustracion de un frente de placard de hojas corredizas.</desc>
+<defs>
+  <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#F4F8FB"/><stop offset="0.55" stop-color="#DCE6EE"/><stop offset="1" stop-color="#BFD0DE"/>
+  </linearGradient>
+  <linearGradient id="wood" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#B08453"/><stop offset="1" stop-color="#8A6238"/>
+  </linearGradient>
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M40 0H0V40" fill="none" stroke="#C7CDD4" stroke-width="1" opacity=".4"/>
+  </pattern>
+</defs>
+<rect width="800" height="600" fill="#EEF1F4"/>
+<rect width="800" height="600" fill="url(#grid)"/><rect x="160" y="110" width="480" height="400" fill="url(#glass)" stroke="#0B1A2E" stroke-width="11"/><rect x="171" y="121" width="458" height="378" fill="none" stroke="#1A365D" stroke-width="1.5" opacity=".5"/><rect x="393" y="121" width="8" height="378" fill="#0B1A2E"/><circle cx="383" cy="310" r="6" fill="#0E7C9B"/><circle cx="411" cy="310" r="6" fill="#0E7C9B"/></svg>

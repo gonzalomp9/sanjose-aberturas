@@ -1,110 +1,184 @@
 @use "../utilities/variables" as v;
 @use "../utilities/mixins" as m;
 
-// catalogo
+// catalogo con acordeon por tipo de producto
 .catalogo {
-  .lista-lineas {
-    @include m.flex(column, nowrap, flex-start, stretch, v.$esp-md);
+  // filtros de arriba (botones puertas / ventanas / etc)
+  .filtros {
+    @include m.flex(row, wrap, flex-start, center, 0.6rem);
+    margin-bottom: v.$esp-lg;
   }
 
-  .linea {
+  .filtro {
+    padding: 0.55rem 1.2rem;
+    border: 1px solid v.$borde;
+    border-radius: 999px;
+    background-color: v.$blanco;
+    font-family: v.$fuente-texto;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: v.$texto;
+    cursor: pointer;
+    transition: background-color v.$transicion, color v.$transicion,
+      border-color v.$transicion;
+
+    &:hover {
+      border-color: v.$acento;
+      color: v.$acento-texto;
+    }
+
+    &.activo {
+      background-color: v.$tinta;
+      border-color: v.$tinta;
+      color: v.$blanco;
+    }
+  }
+
+  // cada grupo desplegable
+  .grupo {
     @extend %tarjeta;
-    display: grid;
-    grid-template-columns: 200px 1fr auto;
-    align-items: center;
-    gap: v.$esp-md;
+    overflow: hidden;
+    margin-bottom: v.$esp-md;
+  }
+
+  // encabezado clickeable (el <summary>)
+  .grupo-cabecera {
+    @include m.flex(row, nowrap, space-between, center, v.$esp-sm);
     padding: v.$esp-md;
-    border-left: 4px solid v.$aluminio;
+    cursor: pointer;
+    list-style: none; // saca la flechita nativa del summary
+    transition: background-color v.$transicion;
 
-    .linea-marca {
-      @include m.flex(column, nowrap, center, flex-start, 0.2rem);
-
-      .eyebrow {
-        @include m.eyebrow(v.$texto-suave);
-        font-size: 0.68rem;
-      }
-
-      h3 {
-        color: v.$azul;
-      }
+    &::-webkit-details-marker {
+      display: none;
     }
 
-    .linea-detalle {
-      p {
-        color: v.$texto-suave;
-        font-size: 0.95rem;
-      }
-
-      ul {
-        @include m.flex(row, wrap, flex-start, center, 0.5rem);
-        margin-top: v.$esp-xs;
-
-        li {
-          font-size: 0.75rem;
-          font-weight: 600;
-          letter-spacing: 0.04em;
-          text-transform: uppercase;
-          color: v.$azul;
-          background-color: rgba(v.$azul, 0.07);
-          border-radius: 999px;
-          padding: 0.25rem 0.7rem;
-        }
-      }
+    &:hover {
+      background-color: v.$humo;
     }
 
-    .linea-precio {
-      text-align: right;
+    .grupo-titulo {
+      @include m.flex(row, nowrap, flex-start, center, v.$esp-sm);
 
-      strong {
-        display: block;
+      .grupo-num {
+        @extend %flex-centro;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background-color: rgba(v.$acento, 0.12);
         font-family: v.$fuente-titulos;
-        font-size: 1.35rem;
+        font-weight: 800;
+        color: v.$acento-texto;
+        font-size: 1.1rem;
+      }
+
+      h2 {
+        font-size: 1.3rem;
         color: v.$tinta;
       }
 
       span {
-        font-size: 0.78rem;
+        display: block;
+        font-size: 0.85rem;
+        font-weight: 400;
+        color: v.$texto-suave;
+      }
+    }
+
+    // flechita propia que rota al abrir
+    .chevron {
+      width: 14px;
+      height: 14px;
+      border-right: 2.5px solid v.$acento;
+      border-bottom: 2.5px solid v.$acento;
+      transform: rotate(45deg);
+      transition: transform v.$transicion;
+      flex-shrink: 0;
+    }
+  }
+
+  // cuando el details esta abierto, giro la flecha
+  .grupo[open] .grupo-cabecera {
+    background-color: v.$humo;
+
+    .chevron {
+      transform: rotate(-135deg);
+    }
+  }
+
+  // contenido que se despliega
+  .grupo-cuerpo {
+    padding: 0 v.$esp-md v.$esp-md;
+    animation: aparecer 0.4s ease;
+  }
+
+  // grilla de subproductos con foto
+  .items {
+    @include m.grid-auto(240px, v.$esp-md);
+    margin-top: v.$esp-sm;
+  }
+
+  .item {
+    border: 1px solid v.$borde;
+    border-radius: v.$radio;
+    overflow: hidden;
+    background-color: v.$blanco;
+    transition: transform v.$transicion, box-shadow v.$transicion;
+
+    .item-foto {
+      background-color: v.$humo;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+    }
+
+    .item-texto {
+      padding: v.$esp-sm;
+
+      h3 {
+        font-size: 1.05rem;
+        color: v.$azul;
+        margin-bottom: 0.3rem;
+      }
+
+      p {
+        font-size: 0.9rem;
         color: v.$texto-suave;
       }
     }
 
     &:hover {
-      border-left-color: v.$acento;
-      transform: translateX(6px);
+      transform: translateY(-5px);
       box-shadow: v.$sombra-media;
-    }
 
-    &--destacada {
-      border-left-color: v.$acento;
-      position: relative;
-
-      &::after {
-        content: "Más elegida";
-        position: absolute;
-        top: -12px;
-        left: v.$esp-md;
-        background-color: v.$acento-oscuro;
-        color: v.$blanco;
-        font-size: 0.7rem;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        padding: 0.2rem 0.7rem;
-        border-radius: 999px;
-      }
-    }
-
-    @include m.hasta-tablet {
-      grid-template-columns: 1fr;
-      gap: v.$esp-sm;
-
-      .linea-precio {
-        text-align: left;
+      .item-foto img {
+        transform: scale(1.05);
       }
     }
   }
 
-  // el recuadro que explica lo de los precios
+  // lista de caracteristicas sueltas (chips)
+  .chips {
+    @include m.flex(row, wrap, flex-start, center, 0.5rem);
+    margin-top: v.$esp-md;
+
+    li {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: v.$azul;
+      background-color: rgba(v.$azul, 0.07);
+      border-radius: 999px;
+      padding: 0.3rem 0.8rem;
+    }
+  }
+
+  // aviso de precios
   .aviso {
     margin-top: v.$esp-md;
     padding: v.$esp-sm v.$esp-md;
