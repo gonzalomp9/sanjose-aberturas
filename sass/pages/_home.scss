@@ -172,6 +172,35 @@
   }
 }
 
+<<<<<<< HEAD
+// llamado final (se usa en la home y en el catalogo)
+.cta .cta-caja {
+  margin-top: 0;
+}
+
+.cta-caja {
+  @include m.flex(row, wrap, space-between, center, v.$esp-md);
+  background-color: v.$azul;
+  color: v.$blanco;
+  border-radius: v.$radio;
+  padding: v.$esp-lg;
+  margin-top: v.$esp-lg;
+
+  h2 {
+    color: v.$blanco;
+    max-width: 20ch;
+  }
+
+  p {
+    color: rgba(v.$aluminio, 0.9);
+    max-width: 46ch;
+  }
+
+  @include m.mobile {
+    padding: v.$esp-md;
+    text-align: center;
+    justify-content: center;
+=======
 // llamado final
 .cta {
   .cta-caja {
@@ -198,5 +227,6 @@
       text-align: center;
       justify-content: center;
     }
+>>>>>>> 9c1dd5db66677bd1176357c64f4cdb9c993fd773
   }
 }

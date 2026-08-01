@@ -1,0 +1,247 @@
+@use "../utilities/variables" as v;
+@use "../utilities/mixins" as m;
+
+// estilos del modo admin (login, modales, botones de editar/borrar)
+
+// boton llave fijo abajo a la izquierda
+.btn-admin {
+  position: fixed;
+  left: 22px;
+  bottom: 22px;
+  z-index: 1030;
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 50%;
+  background-color: v.$tinta;
+  color: v.$blanco;
+  font-size: 1.1rem;
+  cursor: pointer;
+  opacity: 0.35;
+  box-shadow: v.$sombra-media;
+  transition: opacity v.$transicion, transform v.$transicion,
+    background-color v.$transicion;
+
+  &:hover,
+  &:focus-visible {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+
+  @include m.mobile {
+    left: 14px;
+    bottom: 78px; // arriba del whatsapp
+    width: 40px;
+    height: 40px;
+  }
+}
+
+body.admin-on .btn-admin {
+  opacity: 1;
+  background-color: v.$acento-oscuro;
+}
+
+// cartelito arriba cuando esta en modo admin
+body.admin-on::before {
+  content: "MODO ADMINISTRADOR";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1040;
+  background-color: v.$acento;
+  color: v.$tinta;
+  font-family: v.$fuente-texto;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-align: center;
+  padding: 3px;
+}
+
+// botones mini de editar / borrar
+.mini-admin {
+  border: 1px solid v.$borde;
+  background-color: v.$blanco;
+  border-radius: v.$radio-chico;
+  padding: 0.25rem 0.55rem;
+  font-family: v.$fuente-texto;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color v.$transicion, color v.$transicion,
+    border-color v.$transicion;
+
+  &.editar {
+    color: v.$azul;
+    &:hover { background-color: v.$azul; color: v.$blanco; }
+  }
+  &.borrar {
+    color: #c0392b;
+    &:hover { background-color: #c0392b; color: v.$blanco; border-color: #c0392b; }
+  }
+}
+
+.item-admin {
+  @include m.flex(row, wrap, flex-start, center, 0.4rem);
+  margin-top: 0.7rem;
+}
+
+// tarjeta "agregar producto"
+.item-agregar,
+.obra-agregar {
+  @extend %flex-centro;
+  border: 2px dashed v.$acento;
+  border-radius: v.$radio;
+  background-color: rgba(v.$acento, 0.05);
+  color: v.$acento-texto;
+  font-family: v.$fuente-titulos;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  min-height: 120px;
+  padding: v.$esp-md;
+  transition: background-color v.$transicion;
+
+  &:hover { background-color: rgba(v.$acento, 0.12); }
+}
+
+// botones de admin sobre las fotos de la galeria
+.obra-admin {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 3;
+  @include m.flex(row, nowrap, flex-end, center, 0.35rem);
+
+  .mini-admin {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    @extend %flex-centro;
+  }
+}
+
+// boton editar contacto (aparece en el footer en modo admin)
+.btn-editar-contacto {
+  display: none; // se muestra por JS
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: v.$esp-sm;
+  padding: 0.5rem 1rem;
+  border: 1px solid v.$acento;
+  border-radius: v.$radio-chico;
+  background-color: transparent;
+  color: v.$acento-claro;
+  font-family: v.$fuente-texto;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color v.$transicion, color v.$transicion;
+
+  &:hover { background-color: v.$acento; color: v.$tinta; }
+}
+
+// ==================== MODALES ====================
+.adm-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background-color: rgba(v.$tinta, 0.6);
+  backdrop-filter: blur(3px);
+  padding: v.$esp-md;
+  overflow-y: auto;
+
+  &.visible {
+    @include m.flex(row, nowrap, center, flex-start, 0);
+    padding-top: 8vh;
+  }
+}
+
+.adm-box {
+  width: 100%;
+  max-width: 420px;
+  background-color: v.$blanco;
+  border-radius: v.$radio;
+  box-shadow: v.$sombra-media;
+  padding: v.$esp-md;
+  animation: aparecer 0.3s ease;
+
+  &.ancho { max-width: 520px; }
+
+  h3 {
+    font-family: v.$fuente-titulos;
+    font-size: 1.3rem;
+    color: v.$tinta;
+    margin-bottom: v.$esp-sm;
+  }
+
+  label {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: v.$azul;
+    margin-top: v.$esp-sm;
+    margin-bottom: 0.25rem;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    font-family: v.$fuente-texto;
+    font-size: 0.95rem;
+    color: v.$texto;
+    background-color: v.$humo;
+    border: 1px solid v.$borde;
+    border-radius: v.$radio-chico;
+    transition: border-color v.$transicion, box-shadow v.$transicion;
+
+    &:focus {
+      outline: none;
+      background-color: v.$blanco;
+      border-color: v.$acento;
+      box-shadow: 0 0 0 3px rgba(v.$acento, 0.18);
+    }
+  }
+  textarea { resize: vertical; }
+
+  .adm-nota {
+    font-size: 0.78rem;
+    color: v.$texto-suave;
+    margin-top: 0.35rem;
+  }
+  .adm-error {
+    color: #c0392b;
+    font-size: 0.85rem;
+    min-height: 1.2rem;
+    margin-top: 0.4rem;
+  }
+  .adm-acciones {
+    @include m.flex(row, wrap, flex-start, center, v.$esp-sm);
+    margin-top: v.$esp-md;
+  }
+}
+
+// ==================== TOAST ====================
+#adminToast {
+  position: fixed;
+  bottom: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2100;
+  background-color: v.$tinta;
+  color: v.$blanco;
+  padding: 0.75rem 1.4rem;
+  border-radius: 999px;
+  font-family: v.$fuente-texto;
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: v.$sombra-media;
+  transition: bottom 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  &.show { bottom: 28px; }
+  &.ok { background-color: #1e8e4f; }
+  &.err { background-color: #c0392b; }
+}
