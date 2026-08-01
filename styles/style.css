@@ -843,6 +843,127 @@ body.admin-on::before {
   background-color: #c0392b;
 }
 
+#lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 2200;
+  background-color: rgba(11, 26, 46, 0.92);
+  backdrop-filter: blur(4px);
+  padding: 2rem;
+}
+#lightbox.visible {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+}
+#lightbox .lb-figura {
+  margin: 0;
+  max-width: min(92vw, 1100px);
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  animation: aparecer 0.35s ease;
+}
+#lightbox .lb-figura img {
+  max-width: 100%;
+  max-height: 74vh;
+  width: auto;
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  background-color: #f2f4f6;
+}
+#lightbox .lb-figura figcaption {
+  text-align: center;
+  color: #ffffff;
+  max-width: 60ch;
+}
+#lightbox .lb-figura figcaption strong {
+  display: block;
+  font-family: "Sora", "Segoe UI", sans-serif;
+  font-size: 1.2rem;
+  margin-bottom: 0.2rem;
+}
+#lightbox .lb-figura figcaption span {
+  font-size: 0.95rem;
+  color: rgba(199, 205, 212, 0.9);
+}
+#lightbox .lb-cerrar {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: background-color 0.35s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+#lightbox .lb-cerrar:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  transform: rotate(90deg);
+}
+#lightbox .lb-flecha {
+  display: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 54px;
+  height: 54px;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.35s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+#lightbox .lb-flecha:hover {
+  background-color: #1b9bd1;
+}
+#lightbox .lb-flecha.lb-prev {
+  left: 20px;
+}
+#lightbox .lb-flecha.lb-next {
+  right: 20px;
+}
+#lightbox.con-flechas .lb-flecha {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+}
+@media (max-width: 567px) {
+  #lightbox .lb-flecha {
+    width: 44px;
+    height: 44px;
+    font-size: 1.6rem;
+  }
+  #lightbox .lb-flecha.lb-prev {
+    left: 8px;
+  }
+  #lightbox .lb-flecha.lb-next {
+    right: 8px;
+  }
+  #lightbox .lb-figura img {
+    max-height: 66vh;
+  }
+}
+
 .hero {
   background-color: #0b1a2e;
   color: #ffffff;
