@@ -17,9 +17,9 @@
    Pegá acá los datos de tu proyecto de Supabase.
    Mientras diga "PEGAR_", la página funciona en modo local
    (los cambios se guardan solo en tu navegador). */
-const SUPABASE_URL = "https://urxobudrlvzpqswxysry.supabase.co";
-const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVyeG9idWRybHZ6cHFzd3h5c3J5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU1NzY0NzksImV4cCI6MjEwMTE1MjQ3OX0.S-rowt9XhyMTy6LuQnmvNePfcy6Nvh2Q2feujeUaIG4";
-const ADMIN_EMAIL = "admin@casasanjose.com";
+const SUPABASE_URL = "https://urxobudrlvzpqswxysry.supabase.co";       // ej: https://abcd1234.supabase.co
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVyeG9idWRybHZ6cHFzd3h5c3J5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU1NzY0NzksImV4cCI6MjEwMTE1MjQ3OX0.S-rowt9XhyMTy6LuQnmvNePfcy6Nvh2Q2feujeUaIG4";         // la "anon public" key
+const ADMIN_EMAIL = "admin@casasanjose.com";            // ej: admin@sanjose.com
 
 /* ---------- 2) LOGIN LOCAL (fallback si no usás Supabase) ----------
    Usuario: sjaberturas
@@ -186,6 +186,12 @@ function rutaImg(src) {
   if (/^https?:/.test(src)) return src;      // URL externa
   return BASE + "/" + src.replace(/^\.?\//, "");
 }
+// Para la galería: si es un link externo lo deja tal cual;
+// si es un archivo local (ej "trabajo-1.svg") le pone la carpeta.
+function rutaGaleria(src) {
+  if (/^https?:/.test(src)) return src;
+  return rutaImg("assets/imgs/" + src);
+}
 
 function renderCatalogo() {
   const cont = document.getElementById("listaGrupos");
@@ -251,7 +257,7 @@ function renderGaleria() {
     const fig = document.createElement("figure");
     fig.className = "obra";
     fig.innerHTML = `
-      <img src="${escA(rutaImg("assets/imgs/" + g.img))}" alt="${escA(g.titulo)}" loading="lazy" onerror="this.style.opacity=.3">
+      <img src="${escA(rutaGaleria(g.img))}" alt="${escA(g.titulo)}" loading="lazy" onerror="this.style.opacity=.3">
       <figcaption><strong>${esc(g.titulo)}</strong><span>${esc(g.detalle)}</span></figcaption>
       ${admin.isAdmin ? `<div class="obra-admin">
         <button class="mini-admin editar" data-gedit="${g.id}">✎</button>
