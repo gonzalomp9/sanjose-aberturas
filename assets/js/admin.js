@@ -70,12 +70,12 @@ const GRUPOS_INFO = {
 };
 
 const GALERIA_DEFAULT = [
-  { id: "gl1", grande: true, img: "trabajo-1.svg", titulo: "Ventanal corredizo de tres hojas", detalle: "Línea Módena en blanco · con DVH" },
-  { id: "gl2", img: "trabajo-2.svg", titulo: "Puerta de entrada inyectada", detalle: "Chapa 18 con cerradura multipunto" },
-  { id: "gl3", img: "trabajo-3.svg", titulo: "Cerramiento de balcón en Blindex", detalle: "Vidrio templado sin marcos a la vista" },
-  { id: "gl4", img: "trabajo-4.svg", titulo: "Portón levadizo de paneles", detalle: "Con motorización y control remoto" },
-  { id: "gl5", img: "trabajo-5.svg", titulo: "Ventanal de gran luz para galería", detalle: "Línea A30 New en color negro" },
-  { id: "gl6", img: "trabajo-6.svg", titulo: "Ventana oscilobatiente en PVC", detalle: "Doble vidrio hermético, alta aislación" },
+  { id: "gl1", tam: "grande", img: "trabajo-1.svg", titulo: "Ventanal corredizo de tres hojas", detalle: "Línea Módena en blanco · con DVH" },
+  { id: "gl2", tam: "chica", img: "trabajo-2.svg", titulo: "Puerta de entrada inyectada", detalle: "Chapa 18 con cerradura multipunto" },
+  { id: "gl3", tam: "chica", img: "trabajo-3.svg", titulo: "Cerramiento de balcón en Blindex", detalle: "Vidrio templado sin marcos a la vista" },
+  { id: "gl4", tam: "chica", img: "trabajo-4.svg", titulo: "Portón levadizo de paneles", detalle: "Con motorización y control remoto" },
+  { id: "gl5", tam: "mediana", img: "trabajo-5.svg", titulo: "Ventanal de gran luz para galería", detalle: "Línea A30 New en color negro" },
+  { id: "gl6", tam: "chica", img: "trabajo-6.svg", titulo: "Ventana oscilobatiente en PVC", detalle: "Doble vidrio hermético, alta aislación" },
 ];
 
 // Prefijo para las rutas de imágenes según si estamos en la raíz o en /pages
@@ -265,7 +265,8 @@ function renderGaleria() {
   cont.innerHTML = "";
   admin.galeria.forEach(g => {
     const fig = document.createElement("figure");
-    fig.className = "obra";
+    const tam = g.tam || (g.grande ? "grande" : "chica");
+    fig.className = "obra obra--" + tam;
     fig.innerHTML = `
       <img src="${escA(rutaGaleria(g.img))}" alt="${escA(g.titulo)}" loading="lazy" onerror="this.style.opacity=.3">
       <figcaption><strong>${esc(g.titulo)}</strong><span>${esc(g.detalle)}</span></figcaption>
@@ -413,6 +414,12 @@ function modalHTML() {
         <input type="text" id="admFotoTitulo" placeholder="Ventanal corredizo">
         <label>Detalle</label>
         <input type="text" id="admFotoDetalle" placeholder="Línea Módena en blanco">
+        <label>Tamaño en la galería</label>
+        <select id="admFotoTam">
+          <option value="chica">Chica (1 casillero)</option>
+          <option value="mediana">Mediana (doble ancho)</option>
+          <option value="grande">Grande (destacada, 2×2)</option>
+        </select>
         <div class="adm-acciones">
           <button class="boton" id="admGuardarFoto">Guardar</button>
           <button class="boton--linea" id="admCancelFoto">Cancelar</button>
@@ -557,6 +564,8 @@ function abrirFoto(id) {
   document.getElementById("admFotoImg").value = /^https?:/.test(g.img) ? g.img : "";
   document.getElementById("admFotoTitulo").value = g.titulo;
   document.getElementById("admFotoDetalle").value = g.detalle;
+  // tamaño: puede venir como "tam", o del viejo "grande:true"
+  document.getElementById("admFotoTam").value = g.tam || (g.grande ? "grande" : "chica");
   abrir("admFoto");
 }
 async function guardarFoto() {
@@ -567,6 +576,8 @@ async function guardarFoto() {
   g.img = img || g.img;
   g.titulo = document.getElementById("admFotoTitulo").value.trim() || "Sin título";
   g.detalle = document.getElementById("admFotoDetalle").value.trim();
+  g.tam = document.getElementById("admFotoTam").value;
+  delete g.grande; // ya no se usa el campo viejo
   if (!admin.galeria.includes(g)) admin.galeria.push(g);
   cerrar("admFoto"); renderGaleria(); await guardarTodo(); adminToast("Foto guardada", "ok");
 }

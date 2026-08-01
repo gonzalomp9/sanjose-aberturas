@@ -775,6 +775,7 @@ body.admin-on::before {
   margin-bottom: 0.25rem;
 }
 .adm-box input,
+.adm-box select,
 .adm-box textarea {
   width: 100%;
   padding: 0.6rem 0.75rem;
@@ -787,6 +788,7 @@ body.admin-on::before {
   transition: border-color 0.35s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 .adm-box input:focus,
+.adm-box select:focus,
 .adm-box textarea:focus {
   outline: none;
   background-color: #ffffff;
@@ -1343,9 +1345,12 @@ body.admin-on::before {
   overflow: hidden;
   margin: 0;
 }
-.galeria .obra:first-child {
+.galeria .obra--grande {
   grid-column: span 2;
   grid-row: span 2;
+}
+.galeria .obra--mediana {
+  grid-column: span 2;
 }
 .galeria .obra img {
   width: 100%;
@@ -1392,7 +1397,7 @@ body.admin-on::before {
   .galeria .grilla-galeria {
     grid-template-columns: repeat(2, 1fr);
   }
-  .galeria .obra:first-child {
+  .galeria .obra--grande {
     grid-column: span 2;
     grid-row: span 1;
   }
@@ -1402,7 +1407,8 @@ body.admin-on::before {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
-  .galeria .obra:first-child {
+  .galeria .obra--grande,
+  .galeria .obra--mediana {
     grid-column: span 1;
   }
 }
