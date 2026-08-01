@@ -16,11 +16,15 @@
     overflow: hidden;
     margin: 0;
 
-    // la primera ocupa 2x2
-    &:first-child {
+    // tamaños que se eligen desde el panel admin
+    &--grande {
       grid-column: span 2;
       grid-row: span 2;
     }
+    &--mediana {
+      grid-column: span 2;
+    }
+    // chica ocupa 1 casillero (es el default, no necesita nada)
 
     img {
       width: 100%;
@@ -83,7 +87,8 @@
       grid-template-columns: repeat(2, 1fr);
     }
 
-    .obra:first-child {
+    // en tablet la grande baja a 2 de ancho pero 1 de alto
+    .obra--grande {
       grid-column: span 2;
       grid-row: span 1;
     }
@@ -95,7 +100,9 @@
       gap: v.$esp-sm;
     }
 
-    .obra:first-child {
+    // en celu todas ocupan el ancho completo
+    .obra--grande,
+    .obra--mediana {
       grid-column: span 1;
     }
   }

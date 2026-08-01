@@ -1,0 +1,138 @@
+@use "../utilities/variables" as v;
+@use "../utilities/mixins" as m;
+
+// pagina de glosario (agrupado por temas, con desplegables)
+.glosario {
+  .lista-glosario {
+    @include m.flex(column, nowrap, flex-start, stretch, v.$esp-xl);
+  }
+
+  .glo-tema {
+    .glo-titulo {
+      font-size: 1.5rem;
+      color: v.$azul;
+      margin-bottom: v.$esp-md;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid v.$borde;
+    }
+  }
+
+  .glo-lista {
+    @include m.grid-auto(320px, v.$esp-sm);
+    align-items: start;
+  }
+
+  // cada término es un desplegable
+  .glo-item {
+    @extend %tarjeta;
+    overflow: hidden;
+
+    summary {
+      @include m.flex(row, nowrap, space-between, center, v.$esp-sm);
+      padding: v.$esp-sm v.$esp-md;
+      cursor: pointer;
+      list-style: none;
+      transition: background-color v.$transicion;
+
+      &::-webkit-details-marker {
+        display: none;
+      }
+      &:hover {
+        background-color: v.$humo;
+      }
+    }
+
+    .glo-termino {
+      font-family: v.$fuente-titulos;
+      font-weight: 700;
+      font-size: 1rem;
+      color: v.$tinta;
+    }
+
+    // el signo + que rota a ×
+    .glo-mas {
+      flex-shrink: 0;
+      width: 26px;
+      height: 26px;
+      @extend %flex-centro;
+      border-radius: 50%;
+      background-color: rgba(v.$acento, 0.12);
+      color: v.$acento-texto;
+      font-size: 1.2rem;
+      line-height: 1;
+      transition: transform v.$transicion, background-color v.$transicion;
+    }
+
+    &[open] {
+      .glo-mas {
+        transform: rotate(135deg);
+        background-color: v.$acento;
+        color: v.$blanco;
+      }
+      summary {
+        background-color: v.$humo;
+      }
+    }
+
+    .glo-def {
+      padding: 0 v.$esp-md v.$esp-md;
+      animation: aparecer 0.3s ease;
+
+      p {
+        color: v.$texto-suave;
+        font-size: 0.95rem;
+      }
+    }
+  }
+
+  // botón agregar término (modo admin)
+  .glo-agregar {
+    @extend %flex-centro;
+    border: 2px dashed v.$acento;
+    border-radius: v.$radio;
+    background-color: rgba(v.$acento, 0.05);
+    color: v.$acento-texto;
+    font-family: v.$fuente-titulos;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    min-height: 60px;
+    padding: v.$esp-sm v.$esp-md;
+    transition: background-color v.$transicion;
+
+    &:hover {
+      background-color: rgba(v.$acento, 0.12);
+    }
+  }
+
+  // buscador
+  .glo-buscador {
+    margin-bottom: v.$esp-lg;
+    position: relative;
+
+    input {
+      width: 100%;
+      max-width: 480px;
+      padding: 0.8rem 1rem;
+      font-family: v.$fuente-texto;
+      font-size: 1rem;
+      color: v.$texto;
+      background-color: v.$blanco;
+      border: 1px solid v.$borde;
+      border-radius: v.$radio;
+      transition: border-color v.$transicion, box-shadow v.$transicion;
+
+      &:focus {
+        outline: none;
+        border-color: v.$acento;
+        box-shadow: 0 0 0 3px rgba(v.$acento, 0.18);
+      }
+    }
+  }
+
+  // cuando el buscador oculta términos
+  .glo-item.oculto,
+  .glo-tema.oculto {
+    display: none;
+  }
+}

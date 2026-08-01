@@ -6,19 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0B1A2E">
 
-    <title>Galería de aberturas | San José Aberturas</title>
-    <meta name="description" content="Modelos de aberturas que distribuimos: ventanales Módena, puertas inyectadas, cerramientos de balcón, portones levadizos y sistemas de PVC.">
-    <meta name="keywords" content="galería de aberturas, modelos de ventanas, cerramientos de balcón, portones levadizos, aberturas PVC">
+    <title>Glosario de aberturas | San José Aberturas</title>
+    <meta name="description" content="Glosario de aberturas: qué es el DVH, una puerta foliada, la chapa 18 o 22, un vidrio laminado y más. Términos explicados en palabras simples.">
+    <meta name="keywords" content="glosario aberturas, qué es DVH, qué es foliada, chapa 18, chapa 22, vidrio laminado, oscilobatiente, cerradura multipunto">
     <meta name="author" content="TU-NOMBRE">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://sanjose-aberturas.vercel.app/pages/galeria.html">
+    <link rel="canonical" href="https://sanjose-aberturas.vercel.app/pages/glosario.html">
 
     <meta property="og:type" content="website">
     <meta property="og:locale" content="es_AR">
     <meta property="og:site_name" content="San José Aberturas">
     <meta property="og:title" content="Galería de aberturas | San José Aberturas">
-    <meta property="og:description" content="Modelos de aberturas que distribuimos: ventanales Módena, puertas inyectadas, cerramientos de balcón, portones levadizos y sistemas de PVC.">
-    <meta property="og:url" content="https://sanjose-aberturas.vercel.app/pages/galeria.html">
+    <meta property="og:description" content="Glosario de aberturas: qué es el DVH, una puerta foliada, la chapa 18 o 22, un vidrio laminado y más. Términos explicados en palabras simples.">
+    <meta property="og:url" content="https://sanjose-aberturas.vercel.app/pages/glosario.html">
     <meta property="og:image" content="https://sanjose-aberturas.vercel.app/assets/imgs/logo.png">
 
     <link rel="icon" href="../assets/imgs/favicon.png" type="image/png">
@@ -52,8 +52,8 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link" href="./menu.html">Catálogo</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./galeria.html" aria-current="page">Galería</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./glosario.html">Glosario</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./galeria.html">Galería</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./glosario.html" aria-current="page">Glosario</a></li>
                     <li class="nav-item"><a class="nav-link" href="./nosotros.html">Nosotros</a></li>
                     <li class="nav-item"><a class="nav-link" href="./contacto.html">Contacto</a></li>
                 </ul>
@@ -61,22 +61,30 @@
         </nav>
     </header>
 
-    <main class="seccion galeria">
+    <main class="seccion glosario">
         <div class="contenedor">
             <div class="titulo-seccion">
-                <p class="eyebrow">Modelos</p>
-                <h1>Aberturas que entregamos todos los días</h1>
-                <p>Una selección de los modelos que más nos piden. Cada ficha indica la línea y la terminación, para
-                    que tengas una referencia antes de pedir la cotización.</p>
+                <p class="eyebrow">Glosario</p>
+                <h1>¿Qué significa cada cosa?</h1>
+                <p>Elegir aberturas tiene su vocabulario. Acá te explicamos en palabras simples los términos que vas a
+                    escuchar, para que sepas exactamente qué estás pidiendo.</p>
             </div>
 
-            <section class="grilla-galeria" id="grillaGaleria" aria-label="Modelos de aberturas">
-                <!-- Las fotos se generan desde assets/js/admin.js para poder editarlas en modo admin. -->
-            </section>
+            <div class="glo-buscador">
+                <input type="search" id="buscarGlosario" placeholder="Buscar un término (ej: DVH, foliada, chapa...)"
+                    aria-label="Buscar en el glosario">
+            </div>
 
-            <div class="hero-acciones" style="margin-top: 3rem;">
-                <a href="./contacto.html" class="boton">Quiero cotizar un modelo así <span class="flecha"
-                        aria-hidden="true">→</span></a>
+            <div class="lista-glosario" id="listaGlosario">
+                <!-- El glosario se genera desde assets/js/admin.js para poder editarlo en modo admin. -->
+            </div>
+
+            <div class="cta-caja">
+                <div>
+                    <h2>¿Seguís con dudas?</h2>
+                    <p>Escribinos y te asesoramos sin compromiso. Te ayudamos a elegir lo que mejor te sirve.</p>
+                </div>
+                <a href="./contacto.html" class="boton">Consultanos <span class="flecha" aria-hidden="true">→</span></a>
             </div>
         </div>
     </main>

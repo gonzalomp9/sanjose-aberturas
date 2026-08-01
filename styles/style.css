@@ -1,11 +1,11 @@
-.catalogo .grupo-cabecera .grupo-titulo .grupo-num, .item-agregar,
+.glosario .glo-item .glo-mas, .glosario .glo-agregar, .catalogo .grupo-cabecera .grupo-titulo .grupo-num, .item-agregar,
 .obra-agregar, .obra-admin .mini-admin, .pie .redes ul li a, .pie .wa-flotante {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.contacto .formulario, .contacto .datos-directos .ficha, .contacto .datos-directos .mapa, .nosotros .valores article, .galeria .obra, .catalogo .grupo, .tarjeta {
+.glosario .glo-item, .contacto .formulario, .contacto .datos-directos .ficha, .contacto .datos-directos .mapa, .nosotros .valores article, .galeria .obra, .catalogo .grupo, .tarjeta {
   background-color: #ffffff;
   border: 1px solid #dfe4e9;
   border-radius: 6px;
@@ -1675,6 +1675,123 @@ body.admin-on::before {
 }
 .contacto .datos-directos .mapa iframe:hover {
   filter: none;
+}
+
+.glosario .lista-glosario {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 6rem;
+}
+.glosario .glo-tema .glo-titulo {
+  font-size: 1.5rem;
+  color: #1a365d;
+  margin-bottom: 2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #dfe4e9;
+}
+.glosario .glo-lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1rem;
+  align-items: start;
+}
+.glosario .glo-item {
+  overflow: hidden;
+}
+.glosario .glo-item summary {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  list-style: none;
+  transition: background-color 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.glosario .glo-item summary::-webkit-details-marker {
+  display: none;
+}
+.glosario .glo-item summary:hover {
+  background-color: #f2f4f6;
+}
+.glosario .glo-item .glo-termino {
+  font-family: "Sora", "Segoe UI", sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #0b1a2e;
+}
+.glosario .glo-item .glo-mas {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: rgba(27, 155, 209, 0.12);
+  color: #0b6e8f;
+  font-size: 1.2rem;
+  line-height: 1;
+  transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1), background-color 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.glosario .glo-item[open] .glo-mas {
+  transform: rotate(135deg);
+  background-color: #1b9bd1;
+  color: #ffffff;
+}
+.glosario .glo-item[open] summary {
+  background-color: #f2f4f6;
+}
+.glosario .glo-item .glo-def {
+  padding: 0 2rem 2rem;
+  animation: aparecer 0.3s ease;
+}
+.glosario .glo-item .glo-def p {
+  color: #5b6875;
+  font-size: 0.95rem;
+}
+.glosario .glo-agregar {
+  border: 2px dashed #1b9bd1;
+  border-radius: 6px;
+  background-color: rgba(27, 155, 209, 0.05);
+  color: #0b6e8f;
+  font-family: "Sora", "Segoe UI", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  min-height: 60px;
+  padding: 1rem 2rem;
+  transition: background-color 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.glosario .glo-agregar:hover {
+  background-color: rgba(27, 155, 209, 0.12);
+}
+.glosario .glo-buscador {
+  margin-bottom: 4rem;
+  position: relative;
+}
+.glosario .glo-buscador input {
+  width: 100%;
+  max-width: 480px;
+  padding: 0.8rem 1rem;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  font-size: 1rem;
+  color: #26303c;
+  background-color: #ffffff;
+  border: 1px solid #dfe4e9;
+  border-radius: 6px;
+  transition: border-color 0.35s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.glosario .glo-buscador input:focus {
+  outline: none;
+  border-color: #1b9bd1;
+  box-shadow: 0 0 0 3px rgba(27, 155, 209, 0.18);
+}
+.glosario .glo-item.oculto,
+.glosario .glo-tema.oculto {
+  display: none;
 }
 
 /*# sourceMappingURL=style.css.map */

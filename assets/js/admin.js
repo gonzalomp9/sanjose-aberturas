@@ -78,6 +78,37 @@ const GALERIA_DEFAULT = [
   { id: "gl6", tam: "chica", img: "trabajo-6.svg", titulo: "Ventana oscilobatiente en PVC", detalle: "Doble vidrio hermético, alta aislación" },
 ];
 
+// Glosario: cada término tiene un tema, un nombre y su explicación.
+const GLOSARIO_TEMAS = {
+  vidrios: "Vidrios",
+  materiales: "Materiales",
+  sistemas: "Sistemas de apertura",
+  seguridad: "Seguridad y herrajes",
+};
+const GLOSARIO_DEFAULT = [
+  { id: "g_dvh", tema: "vidrios", termino: "DVH (doble vidrio hermético)", def: "Son dos vidrios separados por una cámara de aire sellada. Aísla mucho mejor del frío, el calor y el ruido que un vidrio simple. Ideal para dormitorios y frentes ruidosos." },
+  { id: "g_simple", tema: "vidrios", termino: "Vidrio simple", def: "Un solo vidrio, de 3 a 6 mm. Es la opción más económica. Aísla menos que el DVH, pero cumple bien en interiores o donde el clima no es un problema." },
+  { id: "g_laminado", tema: "vidrios", termino: "Vidrio laminado (de seguridad)", def: "Dos vidrios pegados con una lámina en el medio. Si se rompe, los pedazos quedan pegados a la lámina y no caen. Da seguridad y corta rayos UV." },
+  { id: "g_templado", tema: "vidrios", termino: "Vidrio templado (Blindex)", def: "Vidrio tratado con calor para que sea mucho más resistente. Si se rompe, se hace pedacitos chicos sin filo. Se usa en mamparas, barandas y cerramientos sin marco." },
+  { id: "g_fantasia", tema: "vidrios", termino: "Vidrio fantasía", def: "Vidrio con textura o dibujo que deja pasar la luz pero no deja ver con claridad. Ideal para baños y puertas donde querés luz pero también privacidad." },
+  { id: "g_chapa18", tema: "materiales", termino: "Chapa 18", def: "Se refiere al espesor de la chapa: cuanto más chico el número, más gruesa y resistente. La chapa 18 es gruesa, se usa en puertas de entrada y de seguridad." },
+  { id: "g_chapa22", tema: "materiales", termino: "Chapa 22", def: "Chapa más fina que la 18 (más número = más fina). Se usa en puertas de interior o placares, donde no hace falta tanta resistencia y conviene que sea liviana." },
+  { id: "g_inyectada", tema: "materiales", termino: "Puerta inyectada", def: "Puerta de chapa rellena por dentro con espuma de poliuretano. Esa espuma la hace más rígida y la aísla del frío y del ruido. Típica en puertas de entrada." },
+  { id: "g_foliada", tema: "materiales", termino: "Foliada / símil madera", def: "Es un acabado: se le pega una lámina (folio) que imita la veta de la madera. Queda con aspecto de madera pero con la resistencia del aluminio o la chapa, sin mantenimiento." },
+  { id: "g_mdf", tema: "materiales", termino: "MDF", def: "Un tablero de fibras de madera prensadas. Es parejo, sin nudos, y se pinta o enchapa muy bien. Se usa mucho en puertas de interior y placares." },
+  { id: "g_pvc", tema: "materiales", termino: "PVC", def: "Un material plástico rígido muy usado en aberturas. No se oxida, no se pudre, no condensa y aísla muy bien. No necesita pintura ni mantenimiento." },
+  { id: "g_cedro", tema: "materiales", termino: "Cedro macizo", def: "Madera noble, estable y de buena veta. Se usa en puertas de exterior de mayor jerarquía. Necesita mantenimiento (lustre o barniz) cada cierto tiempo." },
+  { id: "g_corrediza", tema: "sistemas", termino: "Corrediza", def: "Las hojas se deslizan de costado, una detrás de la otra, sin ocupar lugar hacia adentro. Ideal cuando no hay espacio para que la ventana abra hacia el ambiente." },
+  { id: "g_batiente", tema: "sistemas", termino: "De abrir (batiente)", def: "La hoja abre hacia adentro o afuera con bisagras, como una puerta. Cierra muy bien y aísla mejor que la corrediza, pero necesita espacio para el barrido." },
+  { id: "g_oscilo", tema: "sistemas", termino: "Oscilobatiente", def: "Una misma ventana abre de dos formas: como puerta (de costado) o apenas inclinada desde arriba para ventilar sin abrir del todo. Muy práctica y segura." },
+  { id: "g_panofijo", tema: "sistemas", termino: "Paño fijo", def: "Un vidrio que no abre, va fijo en el marco. Se usa para dar luz o combinar con hojas que sí abren. Es la opción más económica y hermética." },
+  { id: "g_proyectante", tema: "sistemas", termino: "Proyectante / banderola", def: "Ventanas chicas que abren inclinándose desde arriba (banderola) o desde abajo (proyectante). Dejan ventilar aunque llueva. Comunes en baños y cocinas." },
+  { id: "g_levadizo", tema: "sistemas", termino: "Portón levadizo", def: "El portón sube entero y queda paralelo al techo del garaje. Ocupa poco lugar y se le puede poner motor con control remoto." },
+  { id: "g_multipunto", tema: "seguridad", termino: "Cerradura multipunto", def: "Con una sola vuelta de llave, la puerta se traba en varios puntos a la vez (arriba, al medio y abajo). Mucho más segura que una cerradura común." },
+  { id: "g_premarco", tema: "seguridad", termino: "Premarco", def: "Un marco que se coloca primero en la pared, durante la obra. Después la abertura se monta sobre él. Ayuda a que quede derecha y bien sellada." },
+  { id: "g_burlete", tema: "seguridad", termino: "Burlete", def: "La goma que va en el contorno de la hoja. Sella contra el marco para que no entre aire, agua ni polvo, y mejora la aislación." },
+];
+
 // Prefijo para las rutas de imágenes según si estamos en la raíz o en /pages
 const BASE = location.pathname.includes("/pages/") ? ".." : ".";
 
@@ -86,6 +117,7 @@ const admin = {
   contacto: { ...CONTACTO_DEFAULT },
   productos: JSON.parse(JSON.stringify(PRODUCTOS_DEFAULT)),
   galeria: JSON.parse(JSON.stringify(GALERIA_DEFAULT)),
+  glosario: JSON.parse(JSON.stringify(GLOSARIO_DEFAULT)),
   isAdmin: false,
 };
 let sb = null, modoRemoto = false;
@@ -108,13 +140,14 @@ async function guardarRemoto() {
 }
 
 function recolectar() {
-  return { contacto: admin.contacto, productos: admin.productos, galeria: admin.galeria };
+  return { contacto: admin.contacto, productos: admin.productos, galeria: admin.galeria, glosario: admin.glosario };
 }
 function aplicar(d) {
   if (!d) return;
   if (d.contacto) admin.contacto = Object.assign({ ...CONTACTO_DEFAULT }, d.contacto);
   if (Array.isArray(d.productos)) admin.productos = d.productos;
   if (Array.isArray(d.galeria)) admin.galeria = d.galeria;
+  if (Array.isArray(d.glosario)) admin.glosario = d.glosario;
 }
 
 /* ==================== guardado local (fallback) ==================== */
@@ -256,6 +289,54 @@ function renderCatalogo() {
       if (p) abrirLightbox([{ img: rutaImg(p.img), titulo: p.nombre, detalle: p.desc }], 0, false);
     });
   });
+}
+
+/* ==================== render del glosario ==================== */
+function renderGlosario() {
+  const cont = document.getElementById("listaGlosario");
+  if (!cont) return;
+  cont.innerHTML = "";
+  Object.keys(GLOSARIO_TEMAS).forEach(tema => {
+    const terminos = admin.glosario.filter(t => t.tema === tema);
+    if (terminos.length === 0 && !admin.isAdmin) return;
+
+    const sec = document.createElement("section");
+    sec.className = "glo-tema";
+
+    let itemsHtml = terminos.map(t => `
+      <details class="glo-item" data-id="${t.id}">
+        <summary>
+          <span class="glo-termino">${esc(t.termino)}</span>
+          <span class="glo-mas" aria-hidden="true">+</span>
+        </summary>
+        <div class="glo-def">
+          <p>${esc(t.def)}</p>
+          ${admin.isAdmin ? `<div class="item-admin">
+            <button class="mini-admin editar" data-tedit="${t.id}">✎ Editar</button>
+            <button class="mini-admin borrar" data-tdel="${t.id}">✕ Borrar</button>
+          </div>` : ""}
+        </div>
+      </details>`).join("");
+
+    if (admin.isAdmin) {
+      itemsHtml += `<button class="glo-agregar" data-tadd="${tema}">＋ Agregar término a ${esc(GLOSARIO_TEMAS[tema])}</button>`;
+    }
+
+    sec.innerHTML = `<h2 class="glo-titulo">${esc(GLOSARIO_TEMAS[tema])}</h2>
+      <div class="glo-lista">${itemsHtml}</div>`;
+    cont.appendChild(sec);
+  });
+
+  if (admin.isAdmin) {
+    cont.querySelectorAll("[data-tedit]").forEach(b => b.addEventListener("click", e => { e.preventDefault(); abrirTermino(b.dataset.tedit); }));
+    cont.querySelectorAll("[data-tdel]").forEach(b => b.addEventListener("click", async e => {
+      e.preventDefault();
+      if (!confirm("¿Borrar este término?")) return;
+      admin.glosario = admin.glosario.filter(t => t.id !== b.dataset.tdel);
+      renderGlosario(); await guardarTodo(); adminToast("Término borrado", "ok");
+    }));
+    cont.querySelectorAll("[data-tadd]").forEach(b => b.addEventListener("click", e => { e.preventDefault(); abrirTermino("", b.dataset.tadd); }));
+  }
 }
 
 /* ==================== render de la galería ==================== */
@@ -427,6 +508,29 @@ function modalHTML() {
       </div>
     </div>
 
+    <!-- término del glosario -->
+    <div class="adm-overlay" id="admTermino">
+      <div class="adm-box">
+        <h3 id="admTerminoTitle">Nuevo término</h3>
+        <input type="hidden" id="admTerminoId"><input type="hidden" id="admTerminoTema">
+        <label>Tema</label>
+        <select id="admTerminoTemaSel">
+          <option value="vidrios">Vidrios</option>
+          <option value="materiales">Materiales</option>
+          <option value="sistemas">Sistemas de apertura</option>
+          <option value="seguridad">Seguridad y herrajes</option>
+        </select>
+        <label>Término</label>
+        <input type="text" id="admTerminoNombre" placeholder="DVH (doble vidrio hermético)">
+        <label>Explicación</label>
+        <textarea id="admTerminoDef" rows="4" placeholder="Explicalo en palabras simples..."></textarea>
+        <div class="adm-acciones">
+          <button class="boton" id="admGuardarTermino">Guardar</button>
+          <button class="boton--linea" id="admCancelTermino">Cancelar</button>
+        </div>
+      </div>
+    </div>
+
     <!-- contacto -->
     <div class="adm-overlay" id="admContacto">
       <div class="adm-box ancho">
@@ -471,6 +575,10 @@ function modalHTML() {
   // foto
   document.getElementById("admCancelFoto").addEventListener("click", () => cerrar("admFoto"));
   document.getElementById("admGuardarFoto").addEventListener("click", guardarFoto);
+
+  // término del glosario
+  document.getElementById("admCancelTermino").addEventListener("click", () => cerrar("admTermino"));
+  document.getElementById("admGuardarTermino").addEventListener("click", guardarTermino);
 
   // contacto
   document.getElementById("admCancelContacto").addEventListener("click", () => cerrar("admContacto"));
@@ -582,6 +690,29 @@ async function guardarFoto() {
   cerrar("admFoto"); renderGaleria(); await guardarTodo(); adminToast("Foto guardada", "ok");
 }
 
+/* ---------- término del glosario ---------- */
+function abrirTermino(id, tema) {
+  const t = admin.glosario.find(x => x.id === id) || { id: "", tema: tema || "vidrios", termino: "", def: "" };
+  document.getElementById("admTerminoTitle").textContent = id ? "Editar término" : "Nuevo término";
+  document.getElementById("admTerminoId").value = t.id;
+  document.getElementById("admTerminoTemaSel").value = t.tema;
+  document.getElementById("admTerminoNombre").value = t.termino;
+  document.getElementById("admTerminoDef").value = t.def;
+  abrir("admTermino");
+}
+async function guardarTermino() {
+  const id = document.getElementById("admTerminoId").value;
+  const obj = {
+    id: id || ("t" + Date.now()),
+    tema: document.getElementById("admTerminoTemaSel").value,
+    termino: document.getElementById("admTerminoNombre").value.trim() || "Término",
+    def: document.getElementById("admTerminoDef").value.trim(),
+  };
+  const i = admin.glosario.findIndex(x => x.id === obj.id);
+  if (i >= 0) admin.glosario[i] = obj; else admin.glosario.push(obj);
+  cerrar("admTermino"); renderGlosario(); await guardarTodo(); adminToast("Término guardado", "ok");
+}
+
 /* ---------- contacto ---------- */
 function abrirContacto() {
   const c = admin.contacto;
@@ -613,6 +744,27 @@ function renderTodo() {
   renderContacto();
   renderCatalogo();
   renderGaleria();
+  renderGlosario();
+}
+
+// buscador del glosario: oculta los términos que no coinciden
+function initBuscadorGlosario() {
+  const input = document.getElementById("buscarGlosario");
+  if (!input) return;
+  input.addEventListener("input", () => {
+    const q = input.value.trim().toLowerCase();
+    document.querySelectorAll(".glo-tema").forEach(tema => {
+      let visibles = 0;
+      tema.querySelectorAll(".glo-item").forEach(item => {
+        const texto = item.textContent.toLowerCase();
+        const match = texto.includes(q);
+        item.classList.toggle("oculto", !match);
+        if (match) visibles++;
+      });
+      // si el tema no tiene resultados, oculto el tema entero
+      tema.classList.toggle("oculto", visibles === 0);
+    });
+  });
 }
 
 /* ==================== init ==================== */
@@ -632,6 +784,7 @@ function renderTodo() {
   if (!modoRemoto) cargarLocal();
 
   renderTodo();
+  initBuscadorGlosario();
 
   // restaurar sesión
   if (modoRemoto && sb) {
