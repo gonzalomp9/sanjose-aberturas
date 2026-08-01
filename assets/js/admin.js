@@ -17,9 +17,9 @@
    Pegá acá los datos de tu proyecto de Supabase.
    Mientras diga "PEGAR_", la página funciona en modo local
    (los cambios se guardan solo en tu navegador). */
-const SUPABASE_URL = "PEGAR_URL_DE_SUPABASE";       // ej: https://abcd1234.supabase.co
-const SUPABASE_ANON_KEY = "PEGAR_ANON_KEY";         // la "anon public" key
-const ADMIN_EMAIL = "PEGAR_EMAIL_ADMIN";            // ej: admin@sanjose.com
+const SUPABASE_URL = "https://urxobudrlvzpqswxysry.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVyeG9idWRybHZ6cHFzd3h5c3J5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU1NzY0NzksImV4cCI6MjEwMTE1MjQ3OX0.S-rowt9XhyMTy6LuQnmvNePfcy6Nvh2Q2feujeUaIG4";
+const ADMIN_EMAIL = "admin@casasanjose.com";
 
 /* ---------- 2) LOGIN LOCAL (fallback si no usás Supabase) ----------
    Usuario: sjaberturas
